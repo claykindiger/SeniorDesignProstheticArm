@@ -5,40 +5,34 @@
 # Lastly, save the image with the bounding box and label.
 #
 
+import sys
 from jetson_inference import detectNet
 from jetson_utils import videoSource, videoOutput, saveImage, Log
 
 Log.SetLevel('Error')
 
-
 ##### LET'S TEST ImageNet too, since we are only classifying images...
+model = sys.argv[1]
 
-net = detectNet("ssd-mobilenet-v2", threshold=0.5)
+net = detectNet(model, threshold=0.5)
 #camera = videoSource("csi://0")      # '/dev/video0' for V4L2 ## OLD CAMERA
-camera = videoSource("/dev/video1")
 #display = videoOutput("display://0") # 'my_video.mp4' for file
 
+num_classes = net.GetNumClasses()
 
-detections = []
+print(num_classes)
 
-while detections == []:
-    img = camera.Capture()
+#labels = {}
+#for i in range(num_classes):
+#	labels[i] = net.GetClassLabel(i)
 
-    if img is None: # capture timeout
-        continue
-	
-    detections = net.Detect(img)
+#print(f"The Model Has the following labels: {labels}")
 
-labels = []
-for det in detections:
-	labels.append(net.GetClassLabel(detections[0].ClassID))
+#with open(f'{model}_labels.txt', mode='w') as f:
+#	f.write(str(labels))
+#	f.close()
 
-print(f"The Model Predicted the Following Objects: {labels}")
+#print(f"Saved resulting labels in {model}_labels.txt")
 
-saveImage("test_pic.jpg",img)
-
-print("Saved resulting picture in test_pic.jpg")
-
-camera.Close()
 	
 
