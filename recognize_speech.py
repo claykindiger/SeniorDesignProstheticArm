@@ -1,23 +1,20 @@
 import speech_recognition
 
-
-def catchAudio():
+def catchAudio(commands):
     recognizer = speech_recognition.Recognizer()
     while True:
         try:
             with speech_recognition.Microphone() as mic:
                 print("Listening...")
                 recognizer.adjust_for_ambient_noise(mic, duration=0.2)
-                audio = recognizer.listen(mic, phrase_time_limit=5)
-                text = recognizer.recognize_google(audio)
+                audio = recognizer.listen(mic, 5, 5)
+                text = recognizer.recognize_sphinx(audio)
                 text.lower()
                 break
         except Exception as e:
             print("Please say command again")
             recognizer = speech_recognition.Recognizer()
-            continue
 
-    commands = ['precision', 'point', 'enemy', 'middle', 'vision']
 
     for ind, command in enumerate(commands):
         if command in text:
@@ -27,3 +24,8 @@ def catchAudio():
             print("Command not found. Word given: " + text)
 
     return text
+
+commands = ['precision', 'point', 'enemy', 'middle', 'vision']
+
+catchAudio(commands)
+

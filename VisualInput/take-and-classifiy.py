@@ -8,7 +8,7 @@
 from jetson_inference import detectNet
 from jetson_utils import videoSource, videoOutput, saveImage, Log
 
-Log.SetLevel('Error')
+#Log.SetLevel('Error')
 
 
 ##### LET'S TEST ImageNet too, since we are only classifying images...
@@ -23,6 +23,7 @@ detections = []
 
 while detections == []:
     img = camera.Capture()
+    print('check')
 
     if img is None: # capture timeout
         continue
