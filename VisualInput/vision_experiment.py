@@ -45,9 +45,10 @@ def run_trial(results,correct_label):
     label = classify_image(None)
     runtime = time.time() - starttime
     
-    results.append([label, correct_label, runtime])
-    return results
-
+    # results.append([label, correct_label, runtime])
+    return [label, correct_label, runtime]
+print('label     correct label      runtime')
 for i in range(num_trials):
     results = run_trial(results,'bottle')
-    print(results)
+    print(f'{results[0]}     {results[1]}      {results[2]}')
+    
