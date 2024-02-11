@@ -1,0 +1,27 @@
+(640.0, 360.0)
+Saved resulting picture in test_pic.jpg
+tv 237.13805094081803 (413.828125, 288.720703125)
+0 tv bottle 0:00:04.285070
+
+(640.0, 360.0)
+Saved resulting picture in test_pic.jpg
+tv 223.3429762967112 (436.875, 267.1435546875)
+1 tv bottle 0:00:02.186868
+
+(640.0, 360.0)
+Saved resulting picture in test_pic.jpg
+keyboard 412.44003148984933 (1019.375, 521.806640625)
+2 keyboard bottle 0:00:02.805134
+
+(640.0, 360.0)
+Saved resulting picture in test_pic.jpg
+keyboard 90.47845238293796 (637.34375, 450.439453125)
+person 470.04423471028883 (1099.375, 260.419921875)
+3 keyboard bottle 0:00:02.170670
+
+(640.0, 360.0)
+Saved resulting picture in test_pic.jpg
+bottle 64.06974044449532 (578.59375, 378.28125)
+4 bottle bottle 0:00:02.650645
+
+
