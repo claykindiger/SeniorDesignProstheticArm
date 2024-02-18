@@ -10,31 +10,34 @@ net = detectNet("ssd-mobilenet-v2", threshold=0.7)
 num_trials = 5
 
 def classify_image(net,trial_num):
-    camera = videoSource("/dev/video0")
+    camera = videoSource("/dev/video1")
     
     center_frame = (camera.GetWidth()/2,camera.GetHeight()/2)
-    print(center_frame)
+    #print(center_frame)
 
     detections = []
 
+    attempts = 0
     while detections == []:
-        img = camera.Capture()
-
-        if img is None: # capture timeout
-            continue
-		
-        detections = net.Detect(img)
-    
+    	attempts += 1
+    	img = camera.Capture()
+    	if img is None: # capture timeout
+    		print(attempts)
+    		if attempts == 10:
+    			return None
+    		continue
+    	detections = net.Detect(img)
+    	
     saveImage(f"experiment/test_pic_{trial_num}.jpg",img)
 
-    print("Saved resulting picture in test_pic.jpg")
+    #print("Saved resulting picture in test_pic.jpg")
 	
     min_label = None
     min_distance = 1000000
     for det in detections:
         center = det.Center
         distance = math.sqrt((center[0]- center_frame[0])**2 + (center[1] - center_frame[1])**2)
-        print(net.GetClassLabel(det.ClassID), distance,center)
+        #print(net.GetClassLabel(det.ClassID), distance,center)
         if distance < min_distance:
             min_distance = distance
             min_label = net.GetClassLabel(det.ClassID)
@@ -62,5 +65,6 @@ for i in range(num_trials):
     corr_lab = results[1]
     time = results[2]
     print(i,lab,corr_lab,time)
-    print()
+    #print()
     
+   

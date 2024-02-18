@@ -1,0 +1,22 @@
+1 foot:
+0 tie bottle 0:00:04.146624
+1 bottle bottle 0:00:02.451050
+2 bottle bottle 0:00:02.538997
+3 bottle bottle 0:00:02.538072
+4 bottle bottle 0:00:02.697198
+
+0 keyboard keyboard 0:00:14.709318
+1 keyboard keyboard 0:00:02.420612
+2 keyboard keyboard 0:00:02.300647
+3 keyboard keyboard 0:00:02.243349
+4 keyboard keyboard 0:00:02.230040
+
+
+2 feet:
+0 keyboard bottle 0:00:04.067013
+1 keyboard bottle 0:00:02.405890
+2 keyboard bottle 0:00:02.244777
+3 suitcase bottle 0:00:09.310091
+4 did not identify
+
+
