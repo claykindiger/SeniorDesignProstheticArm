@@ -1,0 +1,51 @@
+,predicted_label,correct_label,runtime,attempts,distance
+0,cup,cup,0 days 00:00:04.180072,2,1ft
+1,cup,cup,0 days 00:00:01.962262,2,1ft
+2,cup,cup,0 days 00:00:01.891315,2,1ft
+3,cup,cup,0 days 00:00:02.931336,8,1ft
+4,cup,cup,0 days 00:00:02.320365,5,1ft
+5,cup,cup,0 days 00:00:01.961431,2,1ft
+6,cup,cup,0 days 00:00:02.029953,2,1ft
+7,cup,cup,0 days 00:00:02.765202,8,1ft
+8,dining table,cup,0 days 00:00:02.123621,2,1ft
+9,cup,cup,0 days 00:00:02.786396,7,1ft
+10,cup,cup,0 days 00:00:02.610109,8,1ft
+11,cup,cup,0 days 00:00:02.779957,8,1ft
+12,cup,cup,0 days 00:00:02.775248,8,1ft
+13,cup,cup,0 days 00:00:02.753821,10,1ft
+14,cup,cup,0 days 00:00:02.930649,9,1ft
+15,dining table,cup,0 days 00:00:02.142820,4,1ft
+16,cup,cup,0 days 00:00:02.771482,8,1ft
+17,cup,cup,0 days 00:00:02.594026,9,1ft
+18,dining table,cup,0 days 00:00:02.163974,4,1ft
+19,cup,cup,0 days 00:00:02.752559,10,1ft
+20,cup,cup,0 days 00:00:01.827672,3,1ft
+21,vase,cup,0 days 00:00:53.662511,321,1ft
+22,cup,cup,0 days 00:00:03.398845,12,1ft
+23,cup,cup,0 days 00:00:03.411666,12,1ft
+24,cup,cup,0 days 00:00:06.824955,33,1ft
+25,cup,cup,0 days 00:00:01.898884,2,1ft
+26,cup,cup,0 days 00:00:01.956293,2,1ft
+27,cup,cup,0 days 00:00:02.924880,9,1ft
+28,cup,cup,0 days 00:00:02.912544,9,1ft
+29,cup,cup,0 days 00:00:02.928683,9,1ft
+30,cup,cup,0 days 00:00:02.129475,4,1ft
+31,cup,cup,0 days 00:00:02.613363,7,1ft
+32,cup,cup,0 days 00:00:01.861364,2,1ft
+33,cup,cup,0 days 00:00:02.212506,3,1ft
+34,cup,cup,0 days 00:00:01.882681,2,1ft
+35,cup,cup,0 days 00:00:01.960389,3,1ft
+36,cup,cup,0 days 00:00:01.946033,3,1ft
+37,cup,cup,0 days 00:00:02.172968,2,1ft
+38,cup,cup,0 days 00:00:02.000148,3,1ft
+39,cup,cup,0 days 00:00:02.119017,4,1ft
+40,cup,cup,0 days 00:00:02.139058,4,1ft
+41,cup,cup,0 days 00:00:01.970382,3,1ft
+42,cup,cup,0 days 00:00:01.892133,2,1ft
+43,cup,cup,0 days 00:00:01.856101,2,1ft
+44,cup,cup,0 days 00:00:02.180533,2,1ft
+45,cup,cup,0 days 00:00:02.111370,2,1ft
+46,cup,cup,0 days 00:00:02.602731,7,1ft
+47,cup,cup,0 days 00:00:02.262080,5,1ft
+48,cup,cup,0 days 00:00:01.872221,2,1ft
+49,cup,cup,0 days 00:00:02.267977,5,1ft

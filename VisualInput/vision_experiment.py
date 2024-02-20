@@ -1,4 +1,5 @@
 import math
+import pandas as pd
 from datetime import datetime 
 from jetson_inference import detectNet
 from jetson_utils import videoSource, videoOutput, saveImage, Log
@@ -7,10 +8,11 @@ Log.SetLevel('Error')
 
 net = detectNet("ssd-mobilenet-v2", threshold=0.7)
 
-num_trials = 5
+num_trials = 50
+dist_from_obj = '3ft'
 
 def classify_image(net,trial_num):
-    camera = videoSource("/dev/video1")
+    camera = videoSource("/dev/video0")
     
     center_frame = (camera.GetWidth()/2,camera.GetHeight()/2)
     #print(center_frame)
@@ -22,13 +24,15 @@ def classify_image(net,trial_num):
     	attempts += 1
     	img = camera.Capture()
     	if img is None: # capture timeout
-    		print(attempts)
+    		#print(attempts)
     		if attempts == 10:
-    			return None
+    			return None,attempts
     		continue
+    	if attempts == 10:
+    		return None,attempts
     	detections = net.Detect(img)
     	
-    saveImage(f"experiment/test_pic_{trial_num}.jpg",img)
+    #saveImage(f"experiment/test_pic_{trial_num}.jpg",img)
 
     #print("Saved resulting picture in test_pic.jpg")
 	
@@ -44,27 +48,34 @@ def classify_image(net,trial_num):
 
     camera.Close()
     
-    return min_label
+    return min_label,attempts
 
 results = []
 
 def run_trial(net, trial_num, results,correct_label):
     start = datetime.now()
-    label = classify_image(net,trial_num)
+    label,attempts = classify_image(net,trial_num)
     end = datetime.now()
     runtime = end - start
     
     # results.append([label, correct_label, runtime])
-    return [label, correct_label, runtime]
+    return [label, correct_label, runtime, attempts]
 
 print('trial num    label     correct label      runtime')
 
+data = []
 for i in range(num_trials):
-    results = run_trial(net, i, results,'bottle')
-    lab = results[0]
-    corr_lab = results[1]
-    time = results[2]
-    print(i,lab,corr_lab,time)
-    #print()
+	print(i)
+	results = run_trial(net, i, results,'cup')
+	res = {}
+	res['predicted_label'] = results[0]
+	res['correct_label'] = results[1]
+	res['runtime'] = results[2]
+	res['attempts'] = results[3]
+	res['distance'] = dist_from_obj
+	data.append(res)
+
+data = pd.DataFrame(data)
+data.to_csv(f"./experiment_results_{dist_from_obj}.csv")
     
    
