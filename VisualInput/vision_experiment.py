@@ -52,7 +52,7 @@ def classify_image(net,trial_num):
 
 results = []
 
-def run_trial(net, trial_num, results,correct_label):
+def run_trial(net, trial_num, results, correct_label):
     start = datetime.now()
     label,attempts = classify_image(net,trial_num)
     end = datetime.now()
