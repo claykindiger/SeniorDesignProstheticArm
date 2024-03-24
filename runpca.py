@@ -138,7 +138,7 @@ def point(lag=0.005):
     kit.servo[2].angle=180
     kit.servo[3].angle=180
     kit.servo[4].angle=180
-    for i in range(0, 210):
+    for i in range(0, 210,5):
         if kit.servo[3].angle>0:
             kit.servo[3].angle=180-i
             kit.servo[2].angle=180-i

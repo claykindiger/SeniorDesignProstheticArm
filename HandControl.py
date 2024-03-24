@@ -5,6 +5,7 @@ from jetson_inference import detectNet
 from jetson_utils import videoSource, videoOutput, saveImage, Log
 import speech_recognition
 import runpca
+import time
 
 print('Modules Loaded...')
 
@@ -24,18 +25,23 @@ def catchAudio(commands):
                 print("Listening...")
                 recognizer.adjust_for_ambient_noise(mic, duration=0.2)
                 audio = recognizer.listen(mic, 2, 2)
-                text = recognizer.recognize_google(audio)
-                text.lower()
+                text = recognizer.recognize_google(audio,show_all=True)
+                possible_comms = []
+                for i in text['alternative']:
+                	possible_comms.append(i['transcript'].lower())
+           
+                print(possible_comms)
                 break
         except Exception as e:
-
-            print("Please say command again")
+        	print(e)
+        	print("Please say command again")
             #recognizer = speech_recognition.Recognizer()
 
 
     for ind, command in enumerate(commands):
-        if command in text:
+        if command in possible_comms:
             print(command.capitalize())
+            text = command
             break
         elif ind == (len(commands) - 1):
             print("Command not found. Word given: " + text)
@@ -82,7 +88,7 @@ def label_to_grip(label):
 
 test = True
 
-commands = ['precision', 'point', 'enemy', 'middle', 'vision']
+commands = ['precision', 'point', 'enemy', 'middle', 'vision','small wrap']
 
 ## myoware running anomaly detection to detect flexion of muscle
 
@@ -111,11 +117,13 @@ if command in commands:
 
 if command == 'point':
 	runpca.point()
-elif command == 'SmallWrap':
+elif command == 'SmallWrap' or command == 'small wrap':
 	runpca.small_grasp_out()
 else:
 	print('Grip not found...')
 
+## For now, depends on how we want to indicate the release of an object
+time.sleep(5)
 runpca.neutral()
 
 
