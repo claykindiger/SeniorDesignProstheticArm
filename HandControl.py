@@ -4,10 +4,15 @@
 from jetson_inference import detectNet
 from jetson_utils import videoSource, videoOutput, saveImage, Log
 import speech_recognition
+import runpca
+
+print('Modules Loaded...')
 
 Log.SetLevel('Error')
 
 net = detectNet("ssd-mobilenet-v2", threshold=0.5)
+
+print('Model Loaded...')
 
 ################################# Classification functions
 
@@ -19,7 +24,7 @@ def catchAudio(commands):
                 print("Listening...")
                 recognizer.adjust_for_ambient_noise(mic, duration=0.2)
                 audio = recognizer.listen(mic, 2, 2)
-                text = recognizer.recognize_sphinx(audio)
+                text = recognizer.recognize_google(audio)
                 text.lower()
                 break
         except Exception as e:
@@ -92,7 +97,7 @@ if command in commands:
 	## else (or if input is to turn camera on) --> run image detection
 	print(command)
 	if command != 'vision':
-		# pass grip as input to control function
+		grip = command
 		print('move hand here')
 		
 	else:
@@ -102,9 +107,17 @@ if command in commands:
 		# convert returned image label to grip
 		command = label_to_grip(label)
 		
-print(command)
-
-
 ## run script to move hand to the position
+
+if command == 'point':
+	runpca.point()
+elif command == 'SmallWrap':
+	runpca.small_grasp_out()
+else:
+	print('Grip not found...')
+
+runpca.neutral()
+
+
 
         
